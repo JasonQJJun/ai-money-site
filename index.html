@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI赚钱指南 - 普通人也能用AI实现财务自由</title>
+    <meta name="description" content="2026年最实用的AI赚钱方法，从接单服务到自媒体变现，教你用AI工具开启副业">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Stats */
+        .stats {
+            background: white;
+            padding: 60px 0;
+            margin-top: -40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            margin-bottom: 80px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        /* Section */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .section p {
+            text-align: center;
+            color: #666;
+            font-size: 1.2rem;
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Methods */
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .method-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .method-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .method-emoji {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .method-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .method-card p {
+            text-align: left;
+            color: #666;
+            margin: 0 0 20px 0;
+            max-width: none;
+        }
+
+        .method-price {
+            display: inline-block;
+            background: #f0f4ff;
+            color: #667eea;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        /* Articles */
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .article-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .article-content {
+            padding: 30px;
+        }
+
+        .article-tag {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .article-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .article-card p {
+            text-align: left;
+            color: #666;
+            margin: 0 0 20px 0;
+            max-width: none;
+        }
+
+        .read-more {
+            display: inline-block;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        footer h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        footer p {
+            opacity: 0.8;
+            margin-bottom: 30px;
+        }
+
+        .footer-cta {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1.1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .methods-grid,
+            .article-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🚀 AI赚钱指南</h1>
+            <p>2026年，普通人也能用AI实现财务自由</p>
+            <a href="#methods" class="cta-button">开始赚钱</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="stats">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>5</h3>
+                    <p>种赚钱方式</p>
+                </div>
+                <div class="stat-item">
+                    <h3>10+</h3>
+                    <p>个AI工具推荐</p>
+                </div>
+                <div class="stat-item">
+                    <h3>¥35k</h3>
+                    <p>6个月收入预测</p>
+                </div>
+                <div class="stat-item">
+                    <h3>0</h3>
+                    <p>启动成本</p>
+                </div>
+            </div>
+        </div>
+
+        <section class="section" id="methods">
+            <h2>💰 5种AI赚钱方式</h2>
+            <p>从立即变现到长期收益，选择适合你的赛道</p>
+
+            <div class="methods-grid">
+                <div class="method-card">
+                    <div class="method-emoji">📝</div>
+                    <h3>接单服务</h3>
+                    <p>立即变现的快车道。利用AI工具快速完成文案、图片、语音等服务，收取服务费。</p>
+                    <span class="method-price">¥1000-3500/月</span>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-emoji">📱</div>
+                    <h3>自媒体变现</h3>
+                    <p>建立个人品牌，实现长期收益。公众号、抖音、小红书多平台内容生产。</p>
+                    <span class="method-price">¥1000-10000/月</span>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-emoji">📚</div>
+                    <h3>知识付费</h3>
+                    <p>把学到的AI知识，打包成课程出售。技能变现，收入稳定。</p>
+                    <span class="method-price">¥2000-10000/月</span>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-emoji">🛠️</div>
+                    <h3>工具开发</h3>
+                    <p>开发AI工具，卖给需要的人。技术变现，客单价高。</p>
+                    <span class="method-price">¥5000-20000/单</span>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-emoji">💼</div>
+                    <h3>技术咨询</h3>
+                    <p>用专业知识，为企业提供服务。高客单价，长期合作。</p>
+                    <span class="method-price">¥5000-50000/项目</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="articles">
+            <h2>📖 最新文章</h2>
+            <p>实战经验分享，教你避坑赚钱</p>
+
+            <div class="article-grid">
+                <div class="article-card">
+                    <div class="article-content">
+                        <span class="article-tag">新手入门</span>
+                        <h3>普通人如何用AI赚钱？从零开始的实战指南</h3>
+                        <p>2026年最火的5种AI赚钱方式，从接单服务到自媒体变现...</p>
+                        <a href="articles/普通人如何用AI赚钱.html" class="read-more">阅读全文 →</a>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-content">
+                        <span class="article-tag">提示词</span>
+                        <h3>提示词工程入门：让AI听你的话</h3>
+                        <p>学习提示词工程的核心技巧，提升AI输出质量70%...</p>
+                        <a href="#" class="read-more">即将发布 →</a>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-content">
+                        <span class="article-tag">实战案例</span>
+                        <h3>闲鱼接单实战：我的第一个1000元</h3>
+                        <p>从注册闲鱼到第一单成交，全流程复盘...</p>
+                        <a href="#" class="read-more">即将发布 →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <h2>🚀 AI是一场生产力革命</h2>
+            <p>驾驭AI的人，能力放大十倍。你准备好了吗？</p>
+            <a href="#methods" class="footer-cta">立即开始</a>
+        </div>
+    </footer>
+</body>
+</html>
