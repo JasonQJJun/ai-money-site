@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>订单提交成功 - AI服务工作室</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🐶 AI服务工作室</h1>
+            <nav>
+                <a href="index.html">首页</a>
+                <a href="index.html#services">服务项目</a>
+                <a href="index.html#about">关于我们</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="success-page">
+            <div class="icon">✅</div>
+            <h1>订单提交成功！</h1>
+            <p>感谢您的信任，我们会尽快与您联系</p>
+
+            <div class="order-info">
+                <h3>📋 订单详情</h3>
+                <p><strong>订单编号：</strong><span id="orderId"></span></p>
+                <p><strong>服务类型：</strong><span id="serviceType"></span></p>
+                <p><strong>联系人：</strong><span id="name"></span></p>
+                <p><strong>联系电话：</strong><span id="phone"></span></p>
+                <p id="emailContainer" style="display: none;">
+                    <strong>邮箱：</strong><span id="email"></span>
+                </p>
+                <p id="wechatContainer" style="display: none;">
+                    <strong>微信号：</strong><span id="wechat"></span>
+                </p>
+                <p><strong>需求描述：</strong><br><span id="requirements" style="display: block; margin-top: 0.5rem; line-height: 1.8;"></span></p>
+                <p id="budgetContainer" style="display: none;">
+                    <strong>预算范围：</strong><span id="budget"></span>
+                </p>
+            </div>
+
+            <p>我们的工作人员会在<strong>24小时内</strong>与您联系，请保持电话畅通。</p>
+
+            <a href="index.html" class="btn-large">返回首页</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AI服务工作室. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 从URL参数中获取订单信息
+        window.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+
+            // 服务类型映射
+            const serviceTypeMap = {
+                'copywriting': '文案创作',
+                'coding': '代码开发',
+                'consulting': 'AI咨询',
+                'analysis': '数据分析',
+                'design': '设计辅助',
+                'custom': '定制服务'
+            };
+
+            // 预算映射
+            const budgetMap = {
+                '0-100': '¥0-100',
+                '100-300': '¥100-300',
+                '300-500': '¥300-500',
+                '500-1000': '¥500-1000',
+                '1000+': '¥1000+',
+                '面议': '面议'
+            };
+
+            // 填充订单信息
+            document.getElementById('orderId').textContent = urlParams.get('orderId') || '-';
+            const serviceTypeValue = urlParams.get('serviceType');
+            document.getElementById('serviceType').textContent = serviceTypeMap[serviceTypeValue] || serviceTypeValue || '-';
+            document.getElementById('name').textContent = urlParams.get('name') || '-';
+            document.getElementById('phone').textContent = urlParams.get('phone') || '-';
+
+            // 可选字段
+            const email = urlParams.get('email');
+            if (email) {
+                document.getElementById('email').textContent = email;
+                document.getElementById('emailContainer').style.display = 'block';
+            }
+
+            const wechat = urlParams.get('wechat');
+            if (wechat) {
+                document.getElementById('wechat').textContent = wechat;
+                document.getElementById('wechatContainer').style.display = 'block';
+            }
+
+            const budget = urlParams.get('budget');
+            if (budget) {
+                document.getElementById('budget').textContent = budgetMap[budget] || budget;
+                document.getElementById('budgetContainer').style.display = 'block';
+            }
+
+            // 需求描述
+            document.getElementById('requirements').textContent = urlParams.get('requirements') || '-';
+
+            // 清空URL参数（可选，避免刷新重复显示）
+            if (window.history.replaceState) {
+                window.history.replaceState(null, null, window.location.pathname);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI服务工作室 - 专业AI解决方案</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🐶 AI服务工作室</h1>
+            <nav>
+                <a href="#services">服务项目</a>
+                <a href="#about">关于我们</a>
+                <a href="order.html" class="btn-primary">立即下单</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h2>用AI创造价值，用技术提升效率</h2>
+                <p>专业AI解决方案，助您在数字化时代领先一步</p>
+                <a href="order.html" class="btn-large">开始咨询</a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <h2>我们的服务</h2>
+                <div class="service-grid">
+                    <div class="service-card">
+                        <div class="service-icon">📝</div>
+                        <h3>文案创作</h3>
+                        <p>AI辅助的文章、营销文案、产品描述等</p>
+                        <p class="price">¥99起</p>
+                        <a href="order.html?service=copywriting" class="btn-secondary">立即下单</a>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">💻</div>
+                        <h3>代码开发</h3>
+                        <p>Python、JavaScript等语言的AI辅助开发</p>
+                        <p class="price">¥199起</p>
+                        <a href="order.html?service=coding" class="btn-secondary">立即下单</a>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">🤖</div>
+                        <h3>AI咨询</h3>
+                        <p>AI工具选择、工作流优化、提示词设计</p>
+                        <p class="price">¥149起</p>
+                        <a href="order.html?service=consulting" class="btn-secondary">立即下单</a>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">📊</div>
+                        <h3>数据分析</h3>
+                        <p>数据处理、可视化、智能洞察</p>
+                        <p class="price">¥249起</p>
+                        <a href="order.html?service=analysis" class="btn-secondary">立即下单</a>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">🎨</div>
+                        <h3>设计辅助</h3>
+                        <p>AI图像生成、设计建议、创意优化</p>
+                        <p class="price">¥129起</p>
+                        <a href="order.html?service=design" class="btn-secondary">立即下单</a>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">🔧</div>
+                        <h3>定制服务</h3>
+                        <p>根据您的需求提供定制化AI解决方案</p>
+                        <p class="price">面议</p>
+                        <a href="order.html?service=custom" class="btn-secondary">立即下单</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2>关于我们</h2>
+                <p>我们是一支专注于AI应用的技术团队，拥有丰富的开发经验和实战能力。我们致力于帮助企业和个人充分利用AI技术，提升工作效率和竞争力。</p>
+                <div class="features">
+                    <div class="feature">
+                        <h3>💡 创新驱动</h3>
+                        <p>紧跟AI技术前沿，持续创新</p>
+                    </div>
+                    <div class="feature">
+                        <h3>⚡ 高效交付</h3>
+                        <p>快速响应，按时交付</p>
+                    </div>
+                    <div class="feature">
+                        <h3>🔒 安全可靠</h3>
+                        <p>保护客户数据，确保安全</p>
+                    </div>
+                    <div class="feature">
+                        <h3>🤝 精诚合作</h3>
+                        <p>与客户密切沟通，达成满意结果</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="container">
+                <h2>准备好开始了吗？</h2>
+                <p>立即联系我们，开启AI赋能之旅</p>
+                <a href="order.html" class="btn-large">立即下单</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AI服务工作室. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 从URL参数中获取服务类型，并自动选择
+        const urlParams = new URLSearchParams(window.location.search);
+        const serviceParam = urlParams.get('service');
+        if (serviceParam) {
+            // 存储到sessionStorage供下单页面使用
+            sessionStorage.setItem('selectedService', serviceParam);
+        }
+    </script>
+</body>
+</html>

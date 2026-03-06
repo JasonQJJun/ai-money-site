@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下单 - AI服务工作室</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🐶 AI服务工作室</h1>
+            <nav>
+                <a href="index.html">首页</a>
+                <a href="index.html#services">服务项目</a>
+                <a href="index.html#about">关于我们</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="order-page">
+            <h1>📝 填写订单信息</h1>
+
+            <div id="errorMessage" class="error-message" style="display: none;"></div>
+
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="serviceType">服务类型 *</label>
+                    <select id="serviceType" name="serviceType" required>
+                        <option value="">请选择服务类型</option>
+                        <option value="copywriting">文案创作</option>
+                        <option value="coding">代码开发</option>
+                        <option value="consulting">AI咨询</option>
+                        <option value="analysis">数据分析</option>
+                        <option value="design">设计辅助</option>
+                        <option value="custom">定制服务</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">您的姓名 *</label>
+                    <input type="text" id="name" name="name" required placeholder="请输入您的姓名">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">联系电话 *</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="请输入您的联系电话"
+                           pattern="^1[3-9]\d{9}$"
+                           title="请输入有效的手机号码">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">邮箱地址</label>
+                    <input type="email" id="email" name="email" placeholder="请输入您的邮箱（选填）">
+                </div>
+
+                <div class="form-group">
+                    <label for="wechat">微信号</label>
+                    <input type="text" id="wechat" name="wechat" placeholder="请输入您的微信号（选填）">
+                </div>
+
+                <div class="form-group">
+                    <label for="requirements">需求描述 *</label>
+                    <textarea id="requirements" name="requirements" required
+                              placeholder="请详细描述您的需求，包括：&#10;1. 具体需求内容&#10;2. 期望交付时间&#10;3. 其他特殊要求"></textarea>
+                    <small>至少填写10个字符</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="budget">预算范围</label>
+                    <select id="budget" name="budget">
+                        <option value="">请选择预算范围</option>
+                        <option value="0-100">¥0-100</option>
+                        <option value="100-300">¥100-300</option>
+                        <option value="300-500">¥300-500</option>
+                        <option value="500-1000">¥500-1000</option>
+                        <option value="1000+">¥1000+</option>
+                        <option value="面议">面议</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-large">提交订单</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AI服务工作室. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 自动选择从首页传来的服务类型
+        window.addEventListener('DOMContentLoaded', function() {
+            const selectedService = sessionStorage.getItem('selectedService');
+            if (selectedService) {
+                const serviceSelect = document.getElementById('serviceType');
+                serviceSelect.value = selectedService;
+                sessionStorage.removeItem('selectedService');
+            }
+        });
+
+        // 表单提交处理
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // 获取表单数据
+            const formData = new FormData(this);
+            const orderData = {
+                orderId: 'ORD' + Date.now(),
+                serviceType: formData.get('serviceType'),
+                name: formData.get('name'),
+                phone: formData.get('phone'),
+                email: formData.get('email') || '',
+                wechat: formData.get('wechat') || '',
+                requirements: formData.get('requirements'),
+                budget: formData.get('budget') || '',
+                status: 'pending',
+                createdAt: new Date().toISOString()
+            };
+
+            // 验证需求描述长度
+            if (orderData.requirements.trim().length < 10) {
+                showError('需求描述至少需要10个字符');
+                return;
+            }
+
+            // 模拟提交到服务器（实际项目中需要后端API）
+            try {
+                // 保存到本地存储（演示用）
+                const existingOrders = JSON.parse(localStorage.getItem('orders') || '[]');
+                existingOrders.push(orderData);
+                localStorage.setItem('orders', JSON.stringify(existingOrders));
+
+                // 跳转到成功页面
+                const params = new URLSearchParams({
+                    orderId: orderData.orderId,
+                    serviceType: orderData.serviceType,
+                    name: orderData.name,
+                    phone: orderData.phone,
+                    email: orderData.email,
+                    wechat: orderData.wechat,
+                    requirements: orderData.requirements,
+                    budget: orderData.budget
+                });
+
+                window.location.href = `success.html?${params.toString()}`;
+            } catch (error) {
+                showError('提交订单失败，请稍后重试');
+                console.error('Error submitting order:', error);
+            }
+        });
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+
+            // 3秒后自动隐藏
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
